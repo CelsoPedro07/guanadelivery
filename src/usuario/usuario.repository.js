@@ -5,10 +5,12 @@ class RepositoryUsuario {
   }
 
   async buscar_Usuario() {
-    const sql = "SELECT nome_usuario, email,data_cadastro, data_nascimento  FROM usuario";
+    const sql =
+      "SELECT nome_usuario, email,data_cadastro, data_nascimento  FROM usuario";
     const usuario = await this.db(sql);
     return usuario;
   }
+  
   async criar_Usuario(body) {
     const { nome_usuario, email, senha, data_cadastro, data_nascimento } = body;
     const sql =
@@ -19,28 +21,35 @@ class RepositoryUsuario {
       senha,
       data_cadastro,
       data_nascimento,
-      id, 
+      id,
     ];
     await this.db(sql, values);
     const { senha: senhaUs, ...Usuario_Criado } = body;
     return Usuario_Criado;
   }
-  async atualizar_Usuario(id){
-    const { nome_usuario, email, senha, data_cadastro, data_nascimento }=id.params;
+  async atualizar_Usuario(id) {
+    const { nome_usuario, email, senha, data_cadastro, data_nascimento } =
+      id.params;
     const sql = "UPDATE usuario SET WHERE id=$1 AND id=$2";
-    const values =[id];
-    await this.db(sql,values);
-    const { senha:SenhaU, ...usuario_Atualizado}=id.params;
-    return usuario_Atualizado
-
+    const values = [id];
+    await this.db(sql, values);
+    const { senha: SenhaU, ...usuario_Atualizado } = id.params;
+    return usuario_Atualizado;
   }
 
-  async eliminar_Usuario(id){
+  async eliminar_Usuario(id) {
     const sql = "DELETE usuario WHERE id=$1 AND id=$2";
-    const values =[id];
-    await this.db(sql,values);
-    const {nome_usuario, email, senha, data_cadastro, data_nascimento, ...eliminado_Usuario}=id.params;
-    return eliminado_Usuario
+    const values = [id];
+    await this.db(sql, values);
+    const {
+      nome_usuario,
+      email,
+      senha,
+      data_cadastro,
+      data_nascimento,
+      ...eliminado_Usuario
+    } = id.params;
+    return eliminado_Usuario;
   }
 }
 

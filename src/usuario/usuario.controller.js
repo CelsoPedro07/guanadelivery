@@ -9,8 +9,8 @@ class ControllerUsuario {
     const usuario = await service_usuario.criar_Usuario(req.body);
     return res.send(usuario);
   }
-  async atualizar_Usuario(req, res,id) {
-    const usuario = await service_usuario.atualizar_Usuario(req.body);
+  async atualizar_Usuario(req, res, id) {
+    const usuario = await service_usuario.atualizar_Usuario(req.body, id);
     return res.send(usuario);
   }
   async deletar_Usuario(req, res) {

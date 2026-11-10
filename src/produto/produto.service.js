@@ -1,19 +1,19 @@
-import produto_repository from "./produto.repository.js"
+import repository_Produto from "./produto.repository.js";
 class Service_Produto{
     async buscar_Produto(){
-        const produto = produto_repository.buscar_Produto();
+        const produto = repository_Produto.buscar_Produto();
         return produto
     }
     async criar_Produto(){
-        const produto = produto_repository.criar_Produto();
+        const produto = repository_Produto.criar_Produto();
         return produto
     }
     async atualizar_Produto(){
-        const produto =produto_repository.atualizar_Produto();
+        const produto =repository_Produto.atualizar_Produto();
         return produto
     }
     async eliminar_Produto(){
-        const produto = produto_repository.eliminar_Produto();
+        const produto = repository_Produto.eliminar_Produto();
         return produto
     }
 }

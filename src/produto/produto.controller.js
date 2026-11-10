@@ -5,12 +5,12 @@ class Controller_Produto {
     const produto = await service_produto.buscar_Produto();
     return res.send(produto);
   }
-  async criar_Produto(req, res) {
-    const produto = await service_produto.criar_Produto();
+  async criar_Produto(req, res,body) {
+    const produto = await service_produto.criar_Produto(body);
     return res.send(produto);
   }
-  async atualizar_Produto(req, res) {
-    const produto = await service_produto.atualizar_Produto();
+  async atualizar_Produto(req, res, id) {
+    const produto = await service_produto.atualizar_Produto(req.body, id);
     return res.send(produto);
   }
   async eliminar_Produto(req, res) {
